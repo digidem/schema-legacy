@@ -17,6 +17,6 @@
     "rootDirs": ["src", "generated"],
     "outDir": "intermediate"
   },
-  "include": ["generated/**/*.ts"],
+  "include": ["generated/**/*.ts", "scripts/**/*"],
   "exclude": ["node_modules"]
 }
