@@ -46,10 +46,7 @@
       "ecmaVersion": "latest",
       "sourceType": "module"
     },
-    "rules": {},
-    "ignorePatterns": [
-      "intermediate"
-    ]
+    "rules": {}
   },
   "prettier": {
     "semi": false,
