@@ -18,6 +18,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^9.6.0",
     "json-schema-to-typescript": "^14.1.0",
     "npm-run-all": "^4.1.5",
     "rimraf": "^5.0.7",
@@ -26,5 +27,18 @@
   "dependencies": {
     "ajv": "^8.16.0",
     "ajv-formats": "^3.0.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "commonjs": true,
+      "es2021": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {}
   }
 }
