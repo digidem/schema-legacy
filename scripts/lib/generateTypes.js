@@ -1,8 +1,6 @@
 import { compile } from 'json-schema-to-typescript'
 import { capitalize } from '../utils.js'
 
-const out = 'types'
-
 /**
  * @param {Array<{contents:JSON, filePath:string}>} schemaFiles
  * @returns {Promise<Array<{contents:string, filePath:string}>>}
@@ -10,12 +8,9 @@ const out = 'types'
 export default async function (schemaFiles) {
   const tsFiles = []
   for (let { contents, filePath } of schemaFiles) {
-    const tsFilePath = schemaFileToTsFile(filePath)
-    //const fullPath = resolve(out, tsFilePath);
-    const ts = await compile(contents)
     tsFiles.push({
-      filePath: `${out}/${tsFilePath}`,
-      contents: ts,
+      filePath: schemaFileToTsFile(filePath),
+      contents: await compile(contents),
     })
   }
   return tsFiles
@@ -28,5 +23,5 @@ export default async function (schemaFiles) {
 function schemaFileToTsFile(fullPath) {
   const [schemaName, schemaFile] = fullPath.split('/')
   const [version] = schemaFile.split('.').map((v) => v.replace('v', ''))
-  return `${capitalize(schemaName)}_${version}.d.ts`
+  return `${capitalize(schemaName)}_${version}.ts`
 }

@@ -12,7 +12,7 @@
     "format": "prettier . --write",
     "test": "node --test test/",
     "build": "npm-run-all build:clean build:generate build:tsc build:copy",
-    "build:clean": "rimraf generated intermediate dist",
+    "build:clean": "rimraf generated dist",
     "build:generate": "node scripts/generate.js",
     "build:tsc": "tsc",
     "build:copy": "cpy 'generated/**' dist/"
