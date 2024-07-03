@@ -1,23 +1,27 @@
 {
   "name": "schema-legacy",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Legacy schema and their types",
+  "main": "dist/index.js",
   "type": "module",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm-run-all build:clean build:generate build:tsc",
-    "build:clean": "rimraf generated intermediate",
+    "test": "node --test test/",
+    "build": "npm-run-all build:clean build:generate build:tsc build:copy",
+    "build:clean": "rimraf generated intermediate dist",
     "build:generate": "node scripts/generate.js",
-    "build:tsc": "tsc"
+    "build:tsc": "tsc",
+    "build:copy": "cpy 'generated/**' dist/"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/json-schema": "^7.0.15",
+    "@types/node": "^20.14.9",
+    "cpy-cli": "^5.0.0",
     "eslint": "^9.6.0",
     "json-schema-to-typescript": "^14.1.0",
     "npm-run-all": "^4.1.5",
@@ -41,4 +45,5 @@
     },
     "rules": {}
   }
+    "files": ["dist"]
 }
