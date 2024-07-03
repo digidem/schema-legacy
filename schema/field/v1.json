@@ -11,14 +11,17 @@
     },
     "key": {
       "description": "They key in a tags object that this field applies to. For nested properties, key can be an array e.g. for tags = `{ foo: { bar: 1 } }` the key is `['foo', 'bar']`",
-      "oneOf": [{
-        "type": "string"
-      }, {
-        "type": "array",
-        "items": {
+      "oneOf": [
+        {
           "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
-      }]
+      ]
     },
     "type": {
       "description": "Type of field - defines how the field is displayed to the user.",
@@ -70,36 +73,47 @@
       "description": "List of options the user can select for single- or multi-select fields",
       "type": "array",
       "items": {
-        "anyOf": [{
-          "type": "string"
-        }, {
-          "type": "boolean"
-        }, {
-          "type": "number"
-        }, {
-          "type": "null"
-        }, {
-          "type": "object",
-          "properties": {
-            "label": {
-              "description": "Label in default language to display to the user for this option",
-              "type": "string"
-            },
-            "value": {
-              "description": "Value for tag when this option is selected",
-              "anyOf": [{
-                "type": "string"
-              }, {
-                "type": "boolean"
-              }, {
-                "type": "number"
-              }, {
-                "type": "null"
-              }]
-            }
+        "anyOf": [
+          {
+            "type": "string"
           },
-          "required": ["value"]
-        }]
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "label": {
+                "description": "Label in default language to display to the user for this option",
+                "type": "string"
+              },
+              "value": {
+                "description": "Value for tag when this option is selected",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": ["value"]
+          }
+        ]
       }
     },
     "universal": {

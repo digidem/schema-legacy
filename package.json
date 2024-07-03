@@ -8,6 +8,8 @@
     "test": "test"
   },
   "scripts": {
+    "lint": "eslint --cache .",
+    "format": "prettier . --write",
     "test": "node --test test/",
     "build": "npm-run-all build:clean build:generate build:tsc build:copy",
     "build:clean": "rimraf generated intermediate dist",
@@ -22,7 +24,7 @@
     "@types/json-schema": "^7.0.15",
     "@types/node": "^20.14.9",
     "cpy-cli": "^5.0.0",
-    "eslint": "^9.6.0",
+    "eslint": "^8.57.0",
     "json-schema-to-typescript": "^14.1.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.3.2",
@@ -44,7 +46,10 @@
       "ecmaVersion": "latest",
       "sourceType": "module"
     },
-    "rules": {}
+    "rules": {},
+    "ignorePatterns": [
+      "intermediate"
+    ]
   },
   "prettier": {
     "semi": false,
