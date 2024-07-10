@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://mapeo.world/schemas/observation.json",
+  "title": "Observation",
+  "description": "An observation is something that has been observed at a particular time and place. It is a subjective statement of 'I saw/heard this, here'",
+  "type": "Object",
+  "properties": {
+    "id": {
+      "description": "Unique value that identifies this element",
+      "type": "string"
+    },
+    "created_at": {
+      "description": "RFC3339-formatted datetime of when the first version of the element was created",
+      "type": "string",
+      "format": "date-time"
+    },
+    "timestamp": {
+      "description": "RFC3339-formatted datetime of when this version of the element was created",
+      "type": "string",
+      "format": "date-time"
+    },
+    "type": {
+      "description": "Must be `observation`",
+      "type": "string",
+      "enum": ["observation"]
+    },
+    "links": {
+      "description": "Version ids of the previous document versions this one is replacing",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "schemaVersion": {
+      "description": "Version of this schema. Should increment for breaking changes to the schema",
+      "type": "number",
+      "minimum": 1,
+      "enum": [4]
+    },
+    "lat": {
+      "description": "latitude of the observation",
+      "type": ["number", "null"],
+      "minimum": -90,
+      "maximum": 90
+    },
+    "lon": {
+      "description": "longitude of the observation",
+      "type": ["number", "null"],
+      "minimum": -180,
+      "maximum": 180
+    },
+    "metadata": {
+      "description": "Additional metadata associated with the observation (e.g. location precision, altitude, heading)",
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "boolean",
+              "default": false
+            },
+            "permission": {
+              "type": "string",
+              "enum": ["granted", "rejected"]
+            }
+          }
+        }
+      }
+    }
+  }
+}
