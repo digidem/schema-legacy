@@ -14,9 +14,9 @@
     "esModuleInterop": true,
     "declaration": true,
     "declarationMap": false,
-    "rootDirs": ["src", "generated"],
-    "outDir": "intermediate"
+    "rootDirs": ["generated", "src"],
+    "outDir": "dist"
   },
-  "include": ["generated/**/*.ts"],
+  "include": ["generated/**/*", "scripts/**/*", "src/*.ts"],
   "exclude": ["node_modules"]
 }
